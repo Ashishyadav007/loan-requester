@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element label="Loner request" max_length="40" name="x_cdltd_loan_reque_loner_request" type="collection">
+        <element label="Assignment Group" max_length="32" name="assignment_group" reference="sys_user_group" type="reference"/>
+        <element label="configuration item" max_length="32" name="configuration_item" reference="cmdb_ci_group" type="reference"/>
+        <element choice="1" label="Depot" max_length="40" name="depot" type="choice">
+            <choice/>
+        </element>
+        <element label="Description" max_length="500" name="description" type="string"/>
+        <element choice="1" label="item type" max_length="40" name="item_type" type="choice">
+            <choice/>
+        </element>
         <element attributes="edge_encryption_enabled=true" label="Location to be used" max_length="40" name="location_to_be_used" type="string"/>
         <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element attributes="encode_utf8=false" label="Requested for" max_length="32" name="requested_for" reference="sys_user" type="reference"/>
+        <element label="Short description" max_length="100" name="short_description" type="string"/>
+        <element choice="1" label="state" max_length="40" name="state" type="choice">
+            <choice/>
+        </element>
         <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
         <index name="index">
-            <element name="requested_for"/>
+            <element name="assignment_group"/>
         </index>
         <index name="index2">
+            <element name="configuration_item"/>
+        </index>
+        <index name="index3">
+            <element name="requested_for"/>
+        </index>
+        <index name="index4">
             <element name="sys_class_name"/>
         </index>
     </element>
